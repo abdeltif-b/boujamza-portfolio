@@ -1,17 +1,10 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { ZodError } from "zod";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
-
-export const validateString = (value: unknown, maxLength: number): value is string => {
-  if (!value || typeof value !== "string" || value.length > maxLength) {
-    return false;
-  }
-
-  return true;
-};
 
 export const getErrorMessage = (error: unknown): string => {
   let message: string;
@@ -28,3 +21,23 @@ export const getErrorMessage = (error: unknown): string => {
 
   return message;
 };
+
+// Function to flatten Zod errors into a single string
+export function flattenZodErrors(errors: ZodError, path = ""): string {
+  const errorMessages: string[] = [];
+
+  errors.errors.forEach((error) => {
+    const fullPath = path ? `${path}.${error.path.join(".")}` : error.path.join(".");
+    if (error.message) {
+      errorMessages.push(`Field "${fullPath}": ${error.message}`);
+    }
+    // if (error.type === 'object') {
+    //   const nestedErrors = flattenZodErrors(error, fullPath);
+    //   if (nestedErrors) {
+    //     errorMessages.push(nestedErrors);
+    //   }
+    // }
+  });
+
+  return errorMessages.join("\n");
+}

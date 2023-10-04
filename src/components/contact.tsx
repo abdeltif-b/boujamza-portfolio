@@ -1,52 +1,65 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { sendEmail } from "@/actions/sendEmail";
 import SubmitBtn from "./submit-btn";
 import toast from "react-hot-toast";
 
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import Link from "next/link";
+
 export default function Contact() {
+  const ref = useRef<HTMLFormElement>(null);
+
+  const email = process.env.NEXT_PUBLIC_EMAIL;
+
   return (
-    <>
-      <div>Contact me</div>
-
-      <p className="text-gray-700 -mt-6 dark:text-white/80">
-        Please contact me directly at{" "}
-        <a className="underline" href="mailto:example@gmail.com">
-          example@gmail.com
-        </a>{" "}
-        or through this form.
-      </p>
-
+    <Card>
       <form
+        ref={ref}
         className="mt-10 flex flex-col dark:text-black"
         action={async (formData) => {
           const { data, error } = await sendEmail(formData);
 
           if (error) {
-            toast.error(error);
+            toast.error(error, { duration: Infinity });
             return;
           }
+          // reset the form
+          ref.current?.reset();
+
           toast.success("Email sent successfully!");
         }}
       >
-        <input
-          className="h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-          name="senderEmail"
-          type="email"
-          required
-          maxLength={500}
-          placeholder="Your email"
-        />
-        <textarea
-          className="h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-          name="message"
-          placeholder="Your message"
-          required
-          maxLength={5000}
-        />
-        <SubmitBtn />
+        <CardHeader>
+          <CardTitle>Contact me</CardTitle>
+          <CardDescription>
+            Please contact me at{" "}
+            <Link className="underline" href={`mailto:${email}`}>
+              {email}
+            </Link>{" "}
+            or through this form.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid w-full items-center gap-4">
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="name">Email</Label>
+              <Input name="senderEmail" type="email" required maxLength={500} placeholder="Your email" />
+            </div>
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="framework">Message</Label>
+              <Textarea name="message" placeholder="Your message" required maxLength={5000} />
+            </div>
+          </div>
+        </CardContent>
+        <CardFooter className="flex justify-between">
+          <SubmitBtn />
+        </CardFooter>
       </form>
-    </>
+    </Card>
   );
 }
