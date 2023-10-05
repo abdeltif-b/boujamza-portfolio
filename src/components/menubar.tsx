@@ -1,81 +1,79 @@
 "use client";
-import React from "react";
-import { skillsData } from "@/lib/data";
-import { Badge } from "@/components/ui/badge";
-import Section from "@/components/base/section";
-
+import React, { FC } from "react";
+import { links } from "@/lib/data";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
+import { HamburgerMenuIcon } from "@radix-ui/react-icons";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
 
-const Logo = () => {
+type MenuListProps = {
+  isVertical?: boolean;
+};
+
+const Logo = () => (
+  <div className="font-extrabold text-2xl dark:text-white">
+    Portfolio<span className="text-blue-500">/&gt;</span>
+  </div>
+);
+
+const MenuItems: FC<MenuListProps> = ({ isVertical }) => {
   return (
-    <div className="font-extrabold text-2xl dark:text-white">
-      Portfolio<span className="text-blue-500">/&gt;</span>
-    </div>
+    <NavigationMenu>
+      <NavigationMenuList className={cn("flex items-start space-x-0", { "flex-col": isVertical })}>
+        {links.map((item) => {
+          return (
+            <NavigationMenuItem key={item.name} className="flex items-start">
+              <Link href={item.hash} legacyBehavior passHref>
+                <NavigationMenuLink
+                  className={
+                    "group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
+                  }
+                >
+                  {item.name}
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+          );
+        })}
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 };
+
+const MenuItemsMobile = () => (
+  <Sheet>
+    <SheetTrigger asChild>
+      <Button variant="outline">
+        <HamburgerMenuIcon />
+      </Button>
+    </SheetTrigger>
+    <SheetContent>
+      <SheetHeader>
+        <SheetTitle>Menu</SheetTitle>
+      </SheetHeader>
+      <MenuItems isVertical />
+    </SheetContent>
+  </Sheet>
+);
+
 export default function MenuBar() {
   return (
-    <div className="bg-white fixed top-0 w-full shadow-gray-800 bg-opacity-80 backdrop-blur-[0.5rem] dark:bg-black dark:shadow-gray-800">
-      <nav className="container mx-auto px-6 py-3">
+    <div className="bg-white fixed top-0 w-full shadow-gray-800 bg-opacity-60 backdrop-blur-[0.5rem] dark:bg-black dark:bg-opacity-50 dark:backdrop-blur-[0.5rem]">
+      <nav className="container mx-auto px-6 py-2">
         <div className="flex justify-between items-center">
           <Logo />
-          <div className="hidden md:flex items-center space-x-4">
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <Link href="#home" legacyBehavior passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>Home</NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="#about" legacyBehavior passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>About</NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="#projects" legacyBehavior passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>Projects</NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="#skills" legacyBehavior passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>Skills</NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="#experience" legacyBehavior passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>Experience</NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
+          {/* <div className="hidden lg:flex items-center space-x-4">
+            <MenuItems />
           </div>
-          {/* <div className="md:hidden flex items-center">
-            <button className="text-gray-800 focus:outline-none">
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
-              </svg>
-            </button>
+          <div className="lg:hidden flex items-center">
+            <MenuItemsMobile />
           </div> */}
         </div>
       </nav>
