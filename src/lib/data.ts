@@ -83,9 +83,24 @@ export const experiencesData = [
 export const projectsData = [
   {
     title: "Portfolio",
-    description: "test",
+    description: "description",
+    tags: ["React", "Next.js", "MongoDB", "Tailwind"],
+    github: "https://www.github.com",
+    demo: "https://www.google.com/",
+  },
+  {
+    title: "Portfolio2",
+    description: "description",
     tags: ["React", "Next.js", "MongoDB", "Tailwind", "Prisma"],
-    imageUrl: "test",
+    github: "https://www.github.com",
+    demo: "https://www.google.com/",
+  },
+  {
+    title: "Portfolio3",
+    description: "description",
+    tags: ["React", "Next.js", "MongoDB", "Tailwind", "Prisma", "Next.js", "MongoDB", "Tailwind", "Prisma"],
+    github: "https://www.github.com",
+    demo: "https://www.google.com/",
   },
 ] as const;
 
