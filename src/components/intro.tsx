@@ -1,17 +1,12 @@
-"use client";
-
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { FileTextIcon, GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
-// import { BsArrowRight, BsLinkedin } from "react-icons/bs";
-// import { HiDownload } from "react-icons/hi";
-// import { FaGithubSquare } from "react-icons/fa";
 
 export default function Intro() {
   return (
-    <section id="home" className="text-center py-16">
+    <section id="home" className="text-center pt-16 pb-6 mx-10">
       <div className="flex flex-col items-center justify-center gap-5 pt-10">
         <Image
           src="/img/pic.jpeg"
@@ -45,16 +40,18 @@ export default function Intro() {
               Download CV
             </Link>
           </Button>
-          <Button variant="outline" asChild>
-            <Link href={`${process.env.NEXT_PUBLIC_LINKEDIN}`} target="_blank">
-              <LinkedInLogoIcon />
-            </Link>
-          </Button>
-          <Button variant="outline" asChild>
-            <Link href={`${process.env.NEXT_PUBLIC_GITHUB}`} target="_blank">
-              <GitHubLogoIcon />
-            </Link>
-          </Button>
+          <div className="flex gap-2">
+            <Button variant="outline" asChild>
+              <Link href={`${process.env.NEXT_PUBLIC_LINKEDIN}`} target="_blank">
+                <LinkedInLogoIcon />
+              </Link>
+            </Button>
+            <Button variant="outline" asChild>
+              <Link href={`${process.env.NEXT_PUBLIC_GITHUB}`} target="_blank">
+                <GitHubLogoIcon />
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
     </section>

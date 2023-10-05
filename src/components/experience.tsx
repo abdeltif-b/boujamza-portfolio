@@ -1,24 +1,20 @@
-"use client";
-
 import React from "react";
 import { experiencesData } from "@/lib/data";
-import { BoxIcon, CalendarIcon, DotIcon } from "@radix-ui/react-icons";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Header from "@/components/base/header";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import Section from "@/components/base/section";
 
 export default function Experience() {
   return (
-    <section className="flex flex-col items-center justify-center max-w-screen-md py-16">
+    <section className="flex flex-col items-center justify-center max-w-screen-md py-16 mx-10">
       <Header title={"My experience"} />
       <div className="border-l border-gray-300 h-10"></div>
       {experiencesData.map((item, index) => (
-        <>
+        <React.Fragment key={index}>
           {index ? <div className="border-l border-gray-300 h-10"></div> : null}
 
-          <Card key={index}>
+          <Card>
             <CardHeader>
               <CardTitle>{item.title}</CardTitle>
               <CardDescription>
@@ -31,10 +27,10 @@ export default function Experience() {
                   <AccordionTrigger>{item.mission}</AccordionTrigger>
                   <AccordionContent>
                     {item.description.split("- ").map((item, index) => (
-                      <>
+                      <React.Fragment key={index}>
                         {index ? <Separator className="my-3" /> : null}
-                        <div key={index}>{item}</div>
-                      </>
+                        <div>{item}</div>
+                      </React.Fragment>
                     ))}
                   </AccordionContent>
                 </AccordionItem>
@@ -44,11 +40,8 @@ export default function Experience() {
               <p className="text-sm italic text-gray-600 dark:text-gray-300">{item.skills.join(", ")}</p>
             </CardFooter>
           </Card>
-        </>
+        </React.Fragment>
       ))}
-      {/* <VerticalTimeline lineColor="">
-        
-      </VerticalTimeline> */}
     </section>
   );
 }

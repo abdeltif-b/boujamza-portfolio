@@ -3,9 +3,9 @@ import React from "react";
 const getDate = (): number => {
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
-
   return currentYear;
 };
+
 export default async function Footer() {
   const currentYear = await getDate();
   return (

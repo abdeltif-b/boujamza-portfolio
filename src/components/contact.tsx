@@ -3,9 +3,8 @@
 import React, { useRef } from "react";
 import { sendEmail } from "@/actions/sendEmail";
 import SubmitBtn from "./submit-btn";
-import toast from "react-hot-toast";
-
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { toast } from "sonner";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -14,14 +13,14 @@ import Section from "@/components/base/section";
 
 export default function Contact() {
   const ref = useRef<HTMLFormElement>(null);
-
   const email = process.env.NEXT_PUBLIC_EMAIL;
 
   return (
     <Section title="Contact me">
-      <Card>
+      <Card className="mt-10">
         <form
           ref={ref}
+          className="min-w-screen-sm"
           action={async (formData) => {
             const { data, error } = await sendEmail(formData);
 
