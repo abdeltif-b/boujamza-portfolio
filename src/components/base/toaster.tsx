@@ -1,21 +1,11 @@
 "use client";
-import { TimerIcon } from "@radix-ui/react-icons";
-import { toast, Toaster, ToastBar } from "react-hot-toast";
 
+import { Toaster } from "sonner";
+import { useTheme } from "next-themes";
+
+type themeType = "light" | "dark" | "system" | undefined;
 export const CustomToaster = () => {
-  return (
-    <Toaster position="top-center">
-      {(t) => (
-        <ToastBar toast={t}>
-          {({ icon, message }) => (
-            <>
-              {icon}
-              {message}
-              {t.type !== "loading" && <button onClick={() => toast.dismiss(t.id)}>✖</button>}
-            </>
-          )}
-        </ToastBar>
-      )}
-    </Toaster>
-  );
+  const { theme } = useTheme();
+
+  return <Toaster position="top-center" closeButton invert theme={theme as themeType} />;
 };
