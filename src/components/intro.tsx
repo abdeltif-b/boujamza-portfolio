@@ -21,11 +21,11 @@ export default function Intro() {
           <h1 className="text-5xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white">
             Hello,{" "}
             <span className="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
-              I'm Abdeltif.
+              I&#39;m Abdeltif.
             </span>
           </h1>
           <div className="text-lg font-normal text-gray-700 dark:text-gray-300 pt-5">
-            <p>I'm a full-stack developer with +5 years of experience. I enjoy building web apps.</p>
+            <p>I&#39;m a full-stack developer with +5 years of experience. I enjoy building web apps.</p>
             <p>My focus is Next.js (React / Typescript / Node.js) & FastAPI (Python).</p>
           </div>
         </div>

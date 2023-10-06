@@ -13,8 +13,8 @@ export default function Projects() {
       <Separator className="my-6" />
       <Header title={"Projects"} />
       <div className="text-gray-700 dark:text-gray-300 mt-5">
-        This section showcases a selection of personal projects I've undertaken during my free time, driven by a passion
-        for exploration and experimentation with new technologies.
+        This section showcases a selection of personal projects I&#39;ve undertaken during my free time, driven by a
+        passion for exploration and experimentation with new technologies.
       </div>
       <div className="font-bold text-gray-700 dark:text-gray-300">
         For a glimpse of my professional projects, please refer to the <b>My experience</b> section
@@ -32,8 +32,8 @@ export default function Projects() {
               <div className="text-sm text-gray-200 dark:text-gray-700">{item.description}</div>
               <div className="flex-grow"></div> {/* Push buttons to the bottom */}
               <div className="flex flex-wrap gap-1">
-                {item.tags.map((tag) => (
-                  <Badge>{tag}</Badge>
+                {item.tags.map((tag, idx) => (
+                  <Badge key={idx}>{tag}</Badge>
                 ))}
               </div>
               <div className="flex gap-1">
