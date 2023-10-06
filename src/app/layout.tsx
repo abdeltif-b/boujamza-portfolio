@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import MenuBar from "@/components/menubar";
 import ThemeSwitch from "@/components/theme-switch";
 import Footer from "@/components/footer";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
           <ThemeSwitch />
           <CustomToaster />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
