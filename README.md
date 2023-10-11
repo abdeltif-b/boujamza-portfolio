@@ -35,16 +35,16 @@ If you'd like to run this project locally, follow these steps:
    
 2. Install project dependencies:
    ```bash
-  npm install
-  # or
-  yarn install
+     npm install
+     # or
+     yarn install
    ```
 
 3. Start the development server:
    ```bash
-  npm run dev
-  # or
-  yarn dev
+     npm run dev
+     # or
+     yarn dev
    ```
 
 4. Open your browser and navigate to http://localhost:3000 to see your portfolio.
@@ -53,7 +53,7 @@ If you'd like to run this project locally, follow these steps:
 Contributions are welcome! If you'd like to contribute or have any suggestions, please open an issue or create a pull request.
 
 ## License
-This project is open-source and available under the MIT License.
+This project is open-source and available under the (MIT License)[https://github.com/abdeltif-b/boujamza-portfolio/blob/master/LICENSE].
 
 ## Contact
 If you have any questions or want to get in touch, you can reach me at abdeltif.boujamza@gmail.com .
