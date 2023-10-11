@@ -1,4 +1,5 @@
 # Boujamza Portfolio
+![screenshot](/public/img/boujamza_screenshot.png)
 
 Welcome to the repository for my personal website and portfolio. This website was built using Next.js to showcase my work and blogs.
 
