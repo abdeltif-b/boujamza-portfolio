@@ -53,7 +53,7 @@ If you'd like to run this project locally, follow these steps:
 Contributions are welcome! If you'd like to contribute or have any suggestions, please open an issue or create a pull request.
 
 ## License
-This project is open-source and available under the (MIT License)[https://github.com/abdeltif-b/boujamza-portfolio/blob/master/LICENSE].
+This project is open-source and available under the [MIT License](https://github.com/abdeltif-b/boujamza-portfolio/blob/master/LICENSE).
 
 ## Contact
 If you have any questions or want to get in touch, you can reach me at abdeltif.boujamza@gmail.com .
