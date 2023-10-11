@@ -19,7 +19,7 @@ type MenuListProps = {
 
 const Logo = () => (
   <div className="font-extrabold text-2xl dark:text-white">
-    Portfolio<span className="text-blue-500">/&gt;</span>
+    Boujamza<span className="text-blue-500">/&gt;</span>
   </div>
 );
 
