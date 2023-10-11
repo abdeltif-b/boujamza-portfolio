@@ -27,7 +27,7 @@ export default function Intro() {
           <div className="text-lg font-normal text-gray-700 dark:text-gray-300 pt-5">
             <p>I&#39;m a full-stack developer with +5 years of experience. I enjoy building web apps.</p>
             <p>My focus is Next.js (React / Typescript / Node.js) & FastAPI (Python).</p>
-            <p>I'm highly enthusiastic about AI and machine learning technologies.</p>
+            <p>I&#39;m highly enthusiastic about AI and machine learning technologies.</p>
           </div>
         </div>
 
