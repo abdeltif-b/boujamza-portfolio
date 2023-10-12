@@ -114,7 +114,7 @@ export const projectsData = [
     title: "AutoML Prediction Notebook",
     description:
       "A notebook that presents an exploration of semi-Automated Machine Learning (AutoML) techniques for vessel traffic flow prediction",
-    tags: ["Python", "Pandas", "PyCaret", "Plotly"],
+    tags: ["Machine Learning", "Python", "Pandas", "PyCaret", "Plotly"],
     github: "https://github.com/abdeltif-b/automl-prediction",
     demo: "https://github.com/abdeltif-b/automl-prediction/blob/master/notebook.ipynb",
     cover: "https://github.com/abdeltif-b/automl-prediction/blob/master/Fig1.png?raw=true",
