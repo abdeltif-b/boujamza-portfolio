@@ -5,7 +5,7 @@ import Section from "@/components/base/section";
 
 export default function Skills() {
   return (
-    <Section title="My skills">
+    <Section id={"skills"} title="My skills">
       <ul className="flex flex-wrap justify-center gap-2 text-lg text-gray-800 max-w-screen-md mt-10">
         {skillsData.map((skill, index) => (
           <Badge key={index}>{skill}</Badge>

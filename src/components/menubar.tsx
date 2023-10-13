@@ -11,7 +11,7 @@ import Link from "next/link";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { cn } from "@/lib/utils";
+import { cn, handleScroll } from "@/lib/utils";
 
 type MenuListProps = {
   isVertical?: boolean;
@@ -29,11 +29,15 @@ const MenuItems: FC<MenuListProps> = ({ isVertical }) => {
       <NavigationMenuList className={cn("flex items-start space-x-0", { "flex-col": isVertical })}>
         {links.map((item) => {
           return (
-            <NavigationMenuItem key={item.name} className="flex items-start">
-              <Link href={item.hash} legacyBehavior passHref>
+            <NavigationMenuItem
+              key={item.name}
+              className="flex items-start"
+              onClick={(e) => handleScroll(e, item.hash)}
+            >
+              <Link legacyBehavior passHref href={item.hash}>
                 <NavigationMenuLink
                   className={
-                    "group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
+                    "group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm text-gray-700 dark:text-gray-200 font-bold transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
                   }
                 >
                   {item.name}
@@ -69,12 +73,12 @@ export default function MenuBar() {
       <nav className="container mx-auto px-6 py-2">
         <div className="flex justify-between items-center">
           <Logo />
-          {/* <div className="hidden lg:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4">
             <MenuItems />
           </div>
           <div className="lg:hidden flex items-center">
             <MenuItemsMobile />
-          </div> */}
+          </div>
         </div>
       </nav>
     </div>

@@ -16,7 +16,7 @@ export default function Contact() {
   const email = process.env.NEXT_PUBLIC_EMAIL;
 
   return (
-    <Section title="Contact me">
+    <Section title="Contact me" id="contact">
       <Card className="mt-10">
         <form
           ref={ref}

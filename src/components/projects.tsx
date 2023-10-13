@@ -10,7 +10,7 @@ import React from "react";
 
 export default function Projects() {
   return (
-    <section id="home" className="text-center mx-10 mb-10">
+    <section id="projects" className="text-center mx-10 mb-10">
       <Separator className="my-6" />
       <Header title={"Projects"} />
       <div className="text-gray-700 dark:text-gray-300 mt-5">

@@ -41,3 +41,12 @@ export function flattenZodErrors(errors: ZodError, path = ""): string {
 
   return errorMessages.join("\n");
 }
+
+export const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+  e.preventDefault();
+  const element = document.getElementById(id);
+
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+};
