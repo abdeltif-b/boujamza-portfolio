@@ -42,7 +42,7 @@ export function flattenZodErrors(errors: ZodError, path = ""): string {
   return errorMessages.join("\n");
 }
 
-export const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+export const handleScroll = (e: React.MouseEvent<HTMLElement>, id: string) => {
   e.preventDefault();
   const element = document.getElementById(id);
 
