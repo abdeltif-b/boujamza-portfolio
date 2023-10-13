@@ -4,10 +4,21 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Separator } from "@/components/ui/separator";
 import Header from "@/components/base/header";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { buttonVariants } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
-export default function Experience() {
+export default async function Experience() {
   return (
-    <section className="flex flex-col items-center justify-center max-w-screen-md py-16 mx-10">
+    <section id={"experience"} className="flex flex-col items-center justify-center max-w-screen-md py-16 mx-10">
       <Header title={"My experience"} />
       <div className="border-l border-gray-300 h-10"></div>
       {experiencesData.map((item, index) => (
@@ -36,8 +47,35 @@ export default function Experience() {
                 </AccordionItem>
               </Accordion>
             </CardContent>
-            <CardFooter>
+            <CardFooter className="flex flex-col">
               <p className="text-sm italic text-gray-600 dark:text-gray-300">{item.skills.join(", ")}</p>
+              <Dialog>
+                <DialogTrigger
+                  className={buttonVariants({
+                    variant: "secondary",
+                    className: "w-full mt-3",
+                  })}
+                >
+                  More details
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>
+                      <div>{item.title}</div>
+                      <div className="text-sm text-gray-500">
+                        {item.location} ({item.date})
+                      </div>
+                    </DialogTitle>
+                    <DialogDescription>
+                      <ScrollArea className="max-h-[700px] w-2xl rounded-md  p-4 mt-4">
+                        <article className="prose dark:prose-invert">
+                          <MDXRemote source={item.more} />
+                        </article>
+                      </ScrollArea>
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
             </CardFooter>
           </Card>
         </React.Fragment>
