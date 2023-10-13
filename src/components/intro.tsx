@@ -3,8 +3,13 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { FileTextIcon, GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
+import ContactButton from "@/components/contact-button";
 
 export default function Intro() {
+  const diffYears: number = Math.floor(
+    (new Date().getTime() - new Date(2018, 7, 1).getTime()) / (1000 * 60 * 60 * 24 * 365.25)
+  );
+
   return (
     <section id="home" className="text-center pt-16 pb-6 mx-10">
       <div className="flex flex-col items-center justify-center gap-5 pt-10">
@@ -25,18 +30,16 @@ export default function Intro() {
             </span>
           </h1>
           <div className="text-lg font-normal text-gray-700 dark:text-gray-300 pt-5">
-            <p>I&#39;m a full-stack developer with +5 years of experience. I enjoy building web apps.</p>
+            <p>I&#39;m a full-stack developer with +{diffYears} years of experience. I enjoy building web apps.</p>
             <p>My focus is Next.js (React / Typescript / Node.js) & FastAPI (Python).</p>
             <p>I&#39;m highly enthusiastic about AI and machine learning technologies.</p>
           </div>
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-2 px-4 text-lg font-medium">
-          <Button asChild>
-            <Link href="#contact">Contact me</Link>
-          </Button>
+          <ContactButton />
           <Button variant="secondary" asChild>
-            <Link href="pdfs/cv.pdf" target="_blank">
+            <Link href="pdfs/cv (en).pdf" target="_blank">
               <FileTextIcon className="mr-2 h-4 w-4" />
               Download CV
             </Link>
