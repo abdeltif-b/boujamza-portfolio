@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
-import { useFormStatus } from "react-dom";
+// @ts-expect-error
+import { experimental_useFormStatus as useFormStatus } from "react-dom";
 
 export default function SubmitBtn() {
   const { pending } = useFormStatus();
